@@ -28,7 +28,7 @@ const Details = () => {
               <p className='text-xl font-bold mb-3 p-3'>{data.title}</p>
               <p className=' text-justify p-3'>{data.details}</p>
             </div>
-            <Button><Link to={`/checkout/${data.id}`}>CheckOut</Link></Button>
+            <Button className='p-3'><Link to={`/checkout/${data.id}`}>Premium Access</Link></Button>
           </div>
         </div>
       </div>
