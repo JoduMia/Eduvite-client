@@ -75,6 +75,9 @@ const Header = () => {
                 <Dropdown.Item>
                   <Button onClick={logout}>Logout</Button>
                 </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to={'/update'}>Update profile</Link>
+                </Dropdown.Item>
               </Dropdown> :
               <div className='flex items-center justify-center text-xl font-bold text-black dark:text-white'>
                 <NavLink to={'/login'}>Login <AiOutlineLogin className='inline'/></NavLink>

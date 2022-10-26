@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Register from "../pages/Register";
+import Update from "../pages/Update";
 import PrivateRoute from "./Private/PrivateRoute";
 
 export const routes = createBrowserRouter(createRoutesFromElements(
@@ -16,6 +17,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="update" element={<Update />} />
             <Route
                 path="/detail/:id" element={<Details />}
                 loader={({ params }) => fetch(`https://assignment10-server-seven.vercel.app/datas/${params.id}`)}
