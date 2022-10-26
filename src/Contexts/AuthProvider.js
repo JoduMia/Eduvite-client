@@ -11,19 +11,23 @@ export const AuthContext = createContext();
 //main react component
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(true);
 
 
 
     //google signin ------>
    const googleSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider)
    };
 
    const signWithEmailPass = (email,password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
    const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -32,6 +36,7 @@ const AuthProvider = ({children}) => {
   };
 
   const githubAuth = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   }
 
@@ -43,14 +48,18 @@ const AuthProvider = ({children}) => {
     return sendEmailVerification(auth.currentUser)
   };
 
-   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, currentUser => {
+      if(currentUser === null || currentUser.emailVerified){
         setUser(currentUser);
-    })
+      }
+      setLoading(false);
+    });
+
     return () => {
-        unSubscribe();
+      unSubscribe();
     }
-   },[])
+  },[]);
 
    const authInfo = {
     googleSignIn,
@@ -61,6 +70,8 @@ const AuthProvider = ({children}) => {
     verifyEmail,
     githubAuth,
     user,
+    loading,
+    setLoading
    }
 
   return (

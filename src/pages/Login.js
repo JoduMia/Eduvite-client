@@ -2,21 +2,27 @@ import { Button, Label, TextInput } from 'flowbite-react'
 import React, { useContext } from 'react'
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider'
 
 const Login = () => {
-    const { googleSignIn, signWithEmailPass,githubAuth } = useContext(AuthContext);
-
+    const { googleSignIn, signWithEmailPass,githubAuth, setLoading } = useContext(AuthContext);
+    const navigate= useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     //login with google
     const googleLogin = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, {replace:true})
             })
             .catch(error => {
                 toast.error(error.message);
+            })
+            .finally(() => {
+                setLoading(false)
             })
     };
 
@@ -25,10 +31,15 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, {replace:true})
+
             })
             .catch(error => {
                 toast.error(error.message);
             })
+            .finally(() => {
+                setLoading(false)
+              })
     };
 
 
@@ -45,9 +56,18 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+
+            if(user.emailVerified){
+              navigate(from, {replace: true});
+            } else {
+              toast.error('Please verify your email and then try login !!!')
+            }
         })
         .catch(error => {
             toast.error(error.message);
+        })
+        .finally(() => {
+          setLoading(false)
         })
     };
 
