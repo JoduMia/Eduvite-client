@@ -1,16 +1,20 @@
 import { Button, Label, TextInput } from 'flowbite-react'
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const Register = () => {
-    // const [error, setError] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     // const [accepted, setAccepted] = useState(false);
     const {emailPassRegister, updateUserInfo, verifyEmail} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError('');
+        setSuccess('');
         const form = e.target;
         const fname = form.fname.value;
         const lname = form.lname.value;
@@ -19,12 +23,9 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         form.reset();
-        console.log(fname,lname , name);
 
         emailPassRegister(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
+        .then(() => {
 
             //update user photo and name
             updationOfUser(photo,name);
@@ -35,11 +36,12 @@ const Register = () => {
             .catch(error => {});
 
             //toast
+            setSuccess('Registration successful. Verify the email Address!')
             toast.success('Please verify your email. Verification has been sent!')
         })
         .catch(error => {
             console.log(error.message);
-            // setError(error.message);
+            setError(error.message);
         });
     };
 
@@ -51,7 +53,7 @@ const Register = () => {
       updateUserInfo(profile)
         .then(()=> {
           console.log('user updated');
-        }).catch(error =>console.log(error.message));
+        }).catch(error =>setError(error.message));
     };
     return (
         <div className=' dark:bg-[#000000ca] rounded-md flex items-center justify-center h-[93vh]'>
@@ -138,6 +140,8 @@ const Register = () => {
                         </Button>
                     </div>
                 </form>
+                <p className='text-red-400 font-medium'>{error && error}</p>
+                <p className='text-green-500 font-medium'>{success && success}</p>
 
                 <div>
                     <p className='font-semibold'>Already have an Account? Please <Link to='/login' className='text-blue-700'>Login !!!</Link></p>

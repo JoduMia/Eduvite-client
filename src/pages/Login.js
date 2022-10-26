@@ -4,21 +4,24 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider'
+import { useState } from 'react';
 
 const Login = () => {
-    const { googleSignIn, signWithEmailPass,githubAuth, setLoading } = useContext(AuthContext);
+    const { googleSignIn, signWithEmailPass,githubAuth, setLoading,user } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate= useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
     //login with google
     const googleLogin = () => {
+        setError('');
         googleSignIn()
-            .then((result) => {
-                const user = result.user;
-                console.log(user);
-                navigate(from, {replace:true})
+            .then(() => {
+                navigate(from, {replace:true});
+                toast.success('Successfully logged in!!!')
             })
             .catch(error => {
+                setError(error.message);
                 toast.error(error.message);
             })
             .finally(() => {
@@ -27,14 +30,14 @@ const Login = () => {
     };
 
     const githubSignIn = () => {
+        setError('');
         githubAuth()
-            .then((result) => {
-                const user = result.user;
-                console.log(user);
-                navigate(from, {replace:true})
-
+            .then(() => {
+                navigate(from, {replace:true});
+                toast.success('Successfully logged in!!!')
             })
             .catch(error => {
+                setError(error.message);
                 toast.error(error.message);
             })
             .finally(() => {
@@ -45,6 +48,7 @@ const Login = () => {
 
 
     const handleSubmit = (e) => {
+        setError('');
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -53,9 +57,7 @@ const Login = () => {
         form.reset()
 
         signWithEmailPass(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
+        .then(() => {
 
             if(user.emailVerified){
               navigate(from, {replace: true});
@@ -64,6 +66,7 @@ const Login = () => {
             }
         })
         .catch(error => {
+            setError(error.message)
             toast.error(error.message);
         })
         .finally(() => {
@@ -115,7 +118,7 @@ const Login = () => {
                         </Button>
                     </div>
                 </form>
-
+                <p className='text-red-600 font-medium'>{error && error}</p>
                 <div>
                     <p className='font-semibold'>Haven't an Account? Please <Link to='/register' className='text-blue-700'>Register!!!</Link></p>
                 </div>
