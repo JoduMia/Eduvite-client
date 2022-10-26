@@ -42,7 +42,7 @@ const Header = () => {
       <Navbar
         fluid={true}
         rounded={true}
-        className='shadow-2xl dark:!bg-[#4df958] !bg-transparent'
+        className='shadow-2xl dark:!bg-[#242624] !bg-gray-50'
       >
         <Link to='/' className='flex items-center'>
           <img
@@ -50,7 +50,7 @@ const Header = () => {
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-black text-white">
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-black">
             Eduvite
           </span>
         </Link>
@@ -76,7 +76,7 @@ const Header = () => {
                   <Button onClick={logout}>Logout</Button>
                 </Dropdown.Item>
               </Dropdown> :
-              <div className='flex items-center justify-center text-xl font-bold text-white dark:text-black'>
+              <div className='flex items-center justify-center text-xl font-bold text-black dark:text-white'>
                 <NavLink to={'/login'}>Login <AiOutlineLogin className='inline'/></NavLink>
               </div>
           }
@@ -85,8 +85,8 @@ const Header = () => {
         <Navbar.Collapse>
           {
             navItems.map(({ id, title, route }) => (
-              <NavLink key={id} to={route} className='block text-lg py-2 pr-4 pl-3 md:p-0   text-white hover:bg-gray-500
-            text-center  dark:border-gray-700 dark:text-black dark:hover:bg-gray-700 dark:hover:!text-blue-700 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white duration-300'>{title}</NavLink>
+              <NavLink key={id} to={route} className='block text-lg py-2 pr-4 pl-3 md:p-0   text-black hover:bg-gray-500
+            text-center  dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:!text-blue-700 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white duration-300'>{title}</NavLink>
             ))
           }
         </Navbar.Collapse>

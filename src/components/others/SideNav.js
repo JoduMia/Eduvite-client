@@ -1,10 +1,18 @@
-import React from 'react'
-import { Link, useLoaderData } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 const SideNav = () => {
-    const datas = useLoaderData();
+  const [datas,setDatas] = useState([]);
+
+  useEffect(() =>{
+    fetch('https://assignment10-server-seven.vercel.app/datas')
+    .then(res => res.json())
+    .then(data => {
+      setDatas(data)
+    })
+  },[])
   return (
-    <div className='flex flex-col text-white'>
+    <div className='flex flex-col text-black'>
         {
             datas.map(({id,name}) => <Link to={`/detail/${id}`} key={id}>{name}</Link>)
         }
