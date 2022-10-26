@@ -12,7 +12,7 @@ const SideNav = () => {
     })
   },[])
   return (
-    <div className='flex flex-col text-blue-600 text-xl font-bold text-center'>
+    <div className='flex flex-col text-blue-600 dark:text-yellow-300 text-xl font-bold text-center'>
         {
             datas.map(({id,name}) => <Link to={`/detail/${id}`} key={id}>{name}</Link>)
         }
