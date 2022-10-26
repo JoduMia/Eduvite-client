@@ -1,6 +1,7 @@
+import { Button } from 'flowbite-react';
 import React from 'react'
 import { createRef } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from 'react-to-pdf';
 import SideNav from '../components/others/SideNav';
 
@@ -17,12 +18,13 @@ const Details = () => {
       </div>
       <div className='md:col-span-3'>
         <div className='md:px-20 py-10'>
-          <div ref={(ref)} className='w-[70%] container mx-auto dark:text-white p-3 shadow-md mt-4'>
-            <div>
+          <div className='w-[70%] container mx-auto dark:text-white p-3 shadow-md mt-4'>
+            <div ref={(ref)}>
               <img src={data.img_url} alt="" />
+              <p className='text-xl font-bold mb-3 p-3'>{data.title}</p>
+              <p className=' text-justify p-3'>{data.details}</p>
             </div>
-            <p className='text-xl font-bold mb-3 p-3'>{data.title}</p>
-            <p className=' text-justify p-3'>{data.details}</p>
+            <Button><Link to={`/checkout/${data.id}`}>CheckOut</Link></Button>
           </div>
           <Pdf targetRef={ref} x={60} y={10} unit={'in'} filename={'detail.pdf'} scale={.5}>
             {({ toPdf }) => <div className='text-black dark:text-white text-center mt-3'><button onClick={toPdf} className='p-2 bg-blue-600 rounded shadow font-bold'>Download Detail</button></div>}
