@@ -14,7 +14,7 @@ const ShowCourse = () => {
         })
       },[])
   return (
-    <div className='grid grid-cols-3 gap-3'>
+    <div className='grid md:grid-cols-3 gap-3'>
         {datas.map(({id,img_url,name}) => (
             <Link key={id} to={`/detail/${id}`}>
                 <div className='p-2 border rounded shadow '>

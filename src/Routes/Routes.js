@@ -1,5 +1,4 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import SideNav from "../components/others/SideNav";
 import ShowCourse from "../components/ShowCourse";
 import Main from "../layouts/Main/Main";
 import Secondary from "../layouts/Secondary";
@@ -14,16 +13,13 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="courses" element={<SideNav />}
-                loader={() => fetch('https://assignment10-server-seven.vercel.app/datas')}
-            />
             <Route
-                path="detail/:id" element={<Details />}
+                path="/detail/:id" element={<Details />}
                 loader={({ params }) => fetch(`https://assignment10-server-seven.vercel.app/datas/${params.id}`)}
             />
-        </Route>
-        <Route path="/coursess" element={<Secondary/>}>
-            <Route index element={<ShowCourse />}/>
+            <Route path="/courses" element={<Secondary />}>
+                <Route index element={<ShowCourse />} />
+            </Route>
         </Route>
     </Route>
 ))
