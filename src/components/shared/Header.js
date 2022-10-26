@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className='sticky top-0 z-50'>
       <Navbar
         fluid={true}
         rounded={true}
