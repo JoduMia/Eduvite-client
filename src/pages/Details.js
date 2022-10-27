@@ -12,27 +12,27 @@ const Details = () => {
   return (
     <div className='dark:bg-[#00052b]'>
 
-    <div className='grid md:grid-cols-4 md:pl-14'>
-      <div className='md:col-span-1 md:py-10 w-full border-r-2 dark:border-yellow-300 border-black'>
-        <SideNav />
-      </div>
-      <div className='md:col-span-3'>
-        <div className='lg:px-20 py-10'>
-        <h1 className='text-center text-black dark:text-yellow-300 font-bold text-3xl mb-4'>Details About <span title='title' className='italic dark:text-[#24f51d]'>"{data.name}"</span></h1>
-        <Pdf targetRef={ref} x={60} y={10} unit={'in'} filename={'detail.pdf'} scale={.5}>
-            {({ toPdf }) => <div className='text-black dark:text-white text-center mt-3'><button onClick={toPdf} className='p-2 bg-blue-600 hover:bg-blue-500 duration-300 rounded shadow font-bold'>Download Detail as Pdf</button></div>}
-          </Pdf>
-          <div className='md:w-[70%] container mx-auto dark:text-white p-3 shadow-md mt-4'>
-            <div ref={(ref)}>
-              <img src={data.img_url} alt="" />
-              <p className='text-xl font-bold mb-3 p-3'>{data.title}</p>
-              <p className=' text-justify p-3'>{data.details}</p>
+      <div className='grid md:grid-cols-4 md:pl-14'>
+        <div className='md:col-span-1 md:py-10 w-full border-r-2 dark:border-yellow-300 border-black'>
+          <SideNav />
+        </div>
+        <div className='md:col-span-3'>
+          <div className='lg:px-20 py-10'>
+            <Pdf targetRef={ref} x={60} y={10} unit={'in'} filename={'detail.pdf'} scale={.5}>
+              {({ toPdf }) => <div className='text-black dark:text-white text-center mt-3'><button onClick={toPdf} className='p-2 bg-blue-600 hover:bg-blue-500 duration-300 rounded shadow font-bold'>Download Detail as Pdf</button></div>}
+            </Pdf>
+            <h1 className='text-center text-black dark:text-yellow-300 font-bold text-3xl mb-4'>Details About <span title='title' className='italic dark:text-[#24f51d]'>"{data.name}"</span></h1>
+            <div className='md:w-[70%] container mx-auto dark:text-white p-3 shadow-md mt-4'>
+              <div ref={(ref)}>
+                <img src={data.img_url} alt="" />
+                <p className='text-xl font-bold mb-3 p-3'>{data.title}</p>
+                <p className=' text-justify p-3'>{data.details}</p>
+              </div>
+              <Button className='p-3'><Link to={`/checkout/${data.id}`}>Premium Access</Link></Button>
             </div>
-            <Button className='p-3'><Link to={`/checkout/${data.id}`}>Premium Access</Link></Button>
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }
