@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const SideNav = () => {
   const [datas, setDatas] = useState([]);
@@ -16,7 +16,7 @@ const SideNav = () => {
       <div className='w-1/2 md:w-full lg:pr-12 mx-auto'>
         {
           datas.map(({ id, name }) => (
-            <Link className='hover:text-white duration-300 hover:bg-[#1f1f1f9e] dark:hover:bg-[#29ba26b2] p-1 md:p-2 rounded block' to={`/detail/${id}`} key={id}>{name}</Link>
+            <NavLink style={({isActive}) => {return {color: isActive? 'red' : ''}}} className='hover:text-white duration-300 hover:bg-[#1f1f1f9e] dark:hover:bg-[#29ba26b2] p-1 md:p-2 rounded block' to={`/detail/${id}`} key={id}>{name}</NavLink>
           ))
         }
       </div>

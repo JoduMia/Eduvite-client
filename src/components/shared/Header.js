@@ -88,7 +88,7 @@ const Header = () => {
         <Navbar.Collapse>
           {
             navItems.map(({ id, title, route }) => (
-              <NavLink key={id} to={route} className='block text-lg py-2 pr-4 pl-3 md:p-0   text-black hover:bg-gray-500
+              <NavLink style={({isActive}) => {return {color: isActive? 'red' : ''}}} key={id} to={route} className='block text-lg py-2 pr-4 pl-3 md:p-0   text-black hover:bg-gray-500
             text-center  dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:!text-blue-700 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white duration-300'>{title}</NavLink>
             ))
           }
