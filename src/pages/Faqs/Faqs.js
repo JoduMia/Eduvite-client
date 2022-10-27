@@ -1,5 +1,5 @@
 import React from 'react'
-import Blog from './Blog'
+import Faq from './Faq'
 const blogs = [
     {
         id: 1,
@@ -12,28 +12,30 @@ const blogs = [
         ans: 'Firebase is a modern real time communication server. It working policy is based on NoSQL. Firebase provides hosting, authentication, notification services. It\'s cross platform SDK helps to butid build android, web, ios apps there are many alternatives of firebase in this modern era. Parse, Back4App, AWSamplify, kuzzle, kuchbatch, mongoDb are the competitors.',
     },
     {
-        id: 3,
-        que: 'How does the private route work?',
+        id:3,
+        que:'How does the private route work?',
         ans: 'Private route means authenticate route. It is just a process to authorize a user to visit the content or do something where he has access. Private route mostly like as publice route but difference in redirection and the authentication.If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated'
     },
     {
-        id: 4,
+        id:4,
         que: 'What is Node? How does it works?',
         ans: 'Node is a javascript runtime. It helps to execute javascript code to run outside the browser. It helps to build scalable modern application. it works in a non-blocking approach. it is highly performanceable.'
     }
 
 ]
 
-const Blogs = () => {
+const Faqs = () => {
     return (
-        <div className='bg-[#fef8f8] dark:bg-[#00052b]'>
-            <div className='grid md:grid-cols-2 gap-8 container mx-auto dark:text-white md:p-20'>
-                {
-                    blogs.map(blog => <Blog key={blog.id} {...blog} />)
-                }
+        <div className='bg-[#fef8f8] w-full dark:bg-[#00052b] '>
+            <div className='container flex items-center justify-center h-[89vh]'>
+                <div className='md:w-1/2 p-5 bg-white dark:bg-[#00000083] shadow mx-auto rounded'>
+                    {
+                        blogs.map(blog => <Faq key={blog.id} {...blog} />)
+                    }
+                </div>
             </div>
         </div>
     )
 }
 
-export default Blogs
+export default Faqs;

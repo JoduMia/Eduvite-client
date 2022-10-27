@@ -100,7 +100,7 @@ const Update = () => {
                             name='email'
                             type="email"
                             placeholder="Enter Your Eamil Address"
-                            value={user.email}
+                            value={user?.email}
                             readOnly
                         />
                     </div>

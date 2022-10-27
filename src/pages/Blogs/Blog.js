@@ -1,19 +1,18 @@
+import { Button } from 'flowbite-react';
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 const Blog = ({ id, que, ans }) => {
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     return (
-        <div onClick={() => setOpen(!open)} className='mb-3'>
-            <div  className='bg-[#dbe7f8d8] flex items-center gap-3 p-2 cursor-pointer rounded'>
-                <span className='bg-white  w-[30px] h-[30px] flex items-center justify-center rounded-full font-extrabold text-xl'>
-                    {open ? '-' : '+'}
-                </span>
-                <h3 className='font-semibold text-lg md:text-xl capitalize'>{que}</h3>
-            </div>
-            {open && <p className='dark:text-white'>{ans}</p>}
-        </div>
+       <div className='border border-gray-400 p-3 rounded space-y-2'>
+            <img src="" alt="" />
+            <h3 className='font-semibold text-lg capitalize'>{que}</h3>
+            {
+                ans.length>50? <p>{ans.slice(0,100)}...<Button>Read more</Button></p> : <p>{ans}</p>
+            }
+       </div>
     )
 }
 

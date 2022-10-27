@@ -5,6 +5,7 @@ import Secondary from "../layouts/Secondary";
 import Blogs from "../pages/Blogs/Blogs";
 import Checkout from "../pages/Checkout";
 import Details from "../pages/Details";
+import Faqs from "../pages/Faqs/Faqs";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
@@ -18,8 +19,9 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="update" element={<Update />} />
+            <Route path="update" element={<PrivateRoute><Update /></PrivateRoute>} />
             <Route path="blogs" element={<Blogs />} />
+            <Route path="faqs" element={<Faqs />} />
             <Route
                 path="/detail/:id" element={<Details />}
                 loader={({ params }) => fetch(`https://assignment10-server-seven.vercel.app/datas/${params.id}`)}

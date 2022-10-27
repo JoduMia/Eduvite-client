@@ -12,7 +12,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 const navItems = [
   { id: 1, title: 'Courses', route: 'courses' },
   { id: 2, title: 'Blogs', route: 'blogs' },
-  { id: 3, title: 'Faqs', route: 'faqs' },
+  { id: 3, title: 'FAQs', route: 'faqs' },
 ]
 
 const Header = () => {
