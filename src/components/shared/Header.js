@@ -42,7 +42,7 @@ const Header = () => {
       <Navbar
         fluid={true}
         rounded={true}
-        className='shadow-2xl dark:!bg-[#242624] !bg-gray-50'
+        className='shadow-2xl dark:!bg-[#020835] !bg-gray-50 border-b dark:border-[#fff]'
       >
         <Link to='/' className='flex items-center'>
           <img

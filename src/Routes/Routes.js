@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from "react-rout
 import ShowCourse from "../components/ShowCourse";
 import Main from "../layouts/Main/Main";
 import Secondary from "../layouts/Secondary";
+import Blogs from "../pages/Blogs/Blogs";
 import Checkout from "../pages/Checkout";
 import Details from "../pages/Details";
 import Home from "../pages/Home";
@@ -18,6 +19,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="update" element={<Update />} />
+            <Route path="blogs" element={<Blogs />} />
             <Route
                 path="/detail/:id" element={<Details />}
                 loader={({ params }) => fetch(`https://assignment10-server-seven.vercel.app/datas/${params.id}`)}
