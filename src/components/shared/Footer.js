@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="p-4 sm:p-6 bg-[#f1e5e5] dark:bg-[#020835] shadow-lg">
+    <footer className="p-4 sm:p-6 bg-[#f1e5e5] dark:bg-[#020835] shadow-lg border-t border-[#00052b] dark:border-white">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <a href="https://Eduvite.com/" className="flex items-center">
